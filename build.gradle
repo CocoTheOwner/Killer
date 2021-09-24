@@ -72,15 +72,9 @@ repositories {
         }
     }
     maven {
-        url 'https://papermc.io/repo/repository/maven-public/'
+        url 'https://mvnrepository.com/artifact/org.jetbrains/'
         content {
-            includeGroup 'io.papermc'
-        }
-    }
-    maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots/'
-        content {
-            includeGroup 'net.kyori'
+            includeGroup 'org.jetbrains'
         }
     }
     mavenCentral()
@@ -101,17 +95,6 @@ repositories {
 // We need parameter meta for the decree command system
 compileJava {
     options.compilerArgs << '-parameters'
-}
-
-// Configure for shading
-shadowJar {
-    minimize()
-    append("plugin.yml")
-    relocate 'io.papermc.lib', 'nl.codevs.killer.util.paper'
-    dependencies {
-        include(dependency('io.papermc:paperlib'))
-        include(dependency('net.kyori:'))
-    }
 }
 
 configurations.all {
@@ -137,10 +120,5 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
     implementation 'org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT'
     implementation 'org.bukkit.craftbukkit:1.17.1:1.17.1'
-
-    // Shaded
-    implementation 'io.papermc:paperlib:1.0.5'
-    implementation "net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT"
-    implementation "net.kyori:adventure-platform-bukkit:4.0.0-SNAPSHOT"
-    implementation 'net.kyori:adventure-api:4.8.1'
+    implementation 'org.jetbrains:annotations:22.0.0'
 }
