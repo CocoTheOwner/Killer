@@ -1,0 +1,24 @@
+name: ${name}
+version: ${version}
+main: ${main}
+load: STARTUP
+website: codevs.nl
+description: Kill your server in an instant!
+commands:
+  kill:
+    aliases: forceStop
+    description: Force stop the server. This is unsafe; it does not save your worlds!
+    permission: killer.kill
+  killer:
+    description: Get information about this plugin.
+    permission: killer
+permissions:
+  killer:
+    description: Access to the killer plugin.
+  killer.kill:
+    description: Force stop the server.
+    default: op
+api-version: ${apiversion}
+hotload-dependencies: false
+author: CocoTheOwner
+prefix: Killer
