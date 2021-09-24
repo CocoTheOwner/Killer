@@ -23,7 +23,7 @@ plugins {
 }
 
 group 'nl.codevs.killer'
-version '0.0.1'
+version '1.0'
 def apiVersion = '1.17'
 def name = getRootProject().getName() // Defined in settings.gradle
 def main = 'nl.codevs.killer.Killer'
@@ -31,15 +31,15 @@ def main = 'nl.codevs.killer.Killer'
 
 // ADD YOURSELF AS A NEW LINE IF YOU WANT YOUR OWN BUILD TASK GENERATED
 // ==============================================================
-registerCustomOutputTask('Coco', 'C:/Users/sjoer/Documents/Development/MCServer/plugins', name)
+registerCustomOutputTask('Coco', 'C://Users/sjoer/Desktop/MCSM/plugins', name)
 // ==============================================================
 
 def registerCustomOutputTask(name, path, plugin) {
     tasks.register('build' + name, Copy) {
         group('development')
         outputs.upToDateWhen { false }
-        dependsOn ':shadowJar'
-        from(file('build/libs/' + plugin + '-' + version + '-all.jar'))
+        dependsOn ':build'
+        from(file('build/libs/' + plugin + '-' + version + '.jar'))
         into(file(path))
         rename { String fileName ->
             fileName.replace(plugin + '-' + version + '-all.jar', plugin + ".jar")

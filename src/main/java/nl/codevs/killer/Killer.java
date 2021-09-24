@@ -19,8 +19,13 @@ public class Killer extends JavaPlugin implements Listener {
     @EventHandler
     public void on(ServerCommandEvent e) {
         if (e.getCommand().replace("/", "").equalsIgnoreCase("kill")) {
+            Bukkit.getServer().shutdown();
             e.setCancelled(true);
-            System.exit(0);
+        }
+        if (e.getCommand().replace("/", "").equalsIgnoreCase("killer")) {
+            e.setCancelled(true);
+            e.getSender().sendMessage("Killer v" + getDescription().getVersion());
+            e.getSender().sendMessage("/kill - Kill the server. This is unsafe!");
         }
     }
 
@@ -30,14 +35,15 @@ public class Killer extends JavaPlugin implements Listener {
             return false;
         }
         if (command.getName().equalsIgnoreCase("killer")) {
-            sender.sendMessage();
+            sender.sendMessage("Killer v" + getDescription().getVersion());
+            sender.sendMessage("/kill - Kill the server. This is unsafe!");
         }
         if (!sender.hasPermission("killer.kill")){
             return false;
         }
         if (command.getName().equalsIgnoreCase("kill") || command.getName().equalsIgnoreCase("forceStop")) {
             sender.sendMessage("Killing the server. This is not a safe operation; your worlds will not be saved!");
-            System.exit(0);
+            Bukkit.getServer().shutdown();
             return true;
         }
         return false;
