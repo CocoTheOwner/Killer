@@ -20,10 +20,8 @@ public class Killer extends JavaPlugin implements Listener {
     public void on(ServerCommandEvent e) {
         if (e.getCommand().replace("/", "").equalsIgnoreCase("kill")) {
             Bukkit.getServer().shutdown();
-            e.setCancelled(true);
         }
         if (e.getCommand().replace("/", "").equalsIgnoreCase("killer")) {
-            e.setCancelled(true);
             e.getSender().sendMessage("Killer v" + getDescription().getVersion());
             e.getSender().sendMessage("/kill - Kill the server. This is unsafe!");
         }
